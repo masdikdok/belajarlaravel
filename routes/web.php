@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('home', function () {
+    return "Halo, selamat datang di website pembelajaran laravel!";
+});
+
+Route::get('dosen', 'DosenController@index');
+
+Route::get('pegawai/{nama}', 'PegawaiController@index');
+Route::get('formulir', 'PegawaiController@formulir');
+Route::post('formulir/proses', 'PegawaiController@proses');
+
+Route::get('blog', 'BlogController@index');
+Route::get('blog/tentang', 'BlogController@tentang');
+Route::get('blog/kontak', 'BlogController@kontak');
