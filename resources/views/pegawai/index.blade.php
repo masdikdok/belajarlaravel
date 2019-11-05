@@ -5,6 +5,14 @@
 <!-- cara penulisan isi section yang pendek -->
 @section('judul_halaman', 'Halaman Pegawai')
 
+@section('css_tambahan')
+<style>
+	.pagination li{
+		list-style-type: none;
+		display: inline-block;
+	}
+</style>
+@endsection
 
 <!-- isi bagian konten -->
 <!-- cara penulisan isi section yang panjang -->
@@ -14,7 +22,14 @@
     <br>
     <br>
 
-	<table border="1">
+	<form action="/pegawai" method="get" align="right">
+		<input type="text" name="cari" value="">
+		<button type="submit">Cari</button>
+		<button type="button" onclick="document.location.href = '/pegawai'">Reset</button>
+	</form>
+	<br>
+
+	<table border="1" width="100%">
 		<thead>
             <th>Nama</th>
             <th>Jabatan</th>
@@ -36,6 +51,14 @@
             @endforeach
         </tbody>
 	</table>
+
+	<br><br>
+	Halaman {{ $pegawai->currentPage() }} <br>
+	Jumlah Data {{ $pegawai->total() }} <br>
+	Data Per Halaman {{ $pegawai->perPage() }} <br>
+
+	<br>
+	{{ $pegawai->links() }}
 
 
 @endsection

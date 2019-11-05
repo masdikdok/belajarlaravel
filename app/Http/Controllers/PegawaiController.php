@@ -7,8 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
-    public function index(){
-        $pegawai = DB::table('pegawai')->get();
+    public function index(Request $request){
+        if($request->has(['cari'])){
+            $pegawai = DB::table('pegawai')->where('nama', 'like', '%'.$request->cari.'%')->paginate(10);
+        }else{
+            $pegawai = DB::table('pegawai')->paginate(10);
+        }
+
 
         return view('pegawai/index', [
             'pegawai' => $pegawai

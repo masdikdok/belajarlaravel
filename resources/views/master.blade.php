@@ -16,6 +16,9 @@
 			<a href="/blog/kontak">KONTAK</a>
 			<a href="/pegawai">PEGAWAI</a>
 		</nav>
+
+		@yield('css_tambahan')
+		
 	</header>
 	<hr>
 	<br>
