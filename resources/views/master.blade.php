@@ -14,6 +14,7 @@
 			<a href="/blog/tentang">TENTANG</a>
 			|
 			<a href="/blog/kontak">KONTAK</a>
+			<a href="/pegawai">PEGAWAI</a>
 		</nav>
 	</header>
 	<hr>

@@ -21,9 +21,16 @@ Route::get('home', function () {
 
 Route::get('dosen', 'DosenController@index');
 
-Route::get('pegawai/{nama}', 'PegawaiController@index');
-Route::get('formulir', 'PegawaiController@formulir');
-Route::post('formulir/proses', 'PegawaiController@proses');
+Route::get('pegawai', 'PegawaiController@index');
+Route::match(['get', 'post'], 'pegawai/tambah', 'PegawaiController@tambah');
+
+Route::get('pegawai/edit/{id}', 'PegawaiController@edit');
+Route::post('pegawai/edit', 'PegawaiController@edit');
+
+Route::get('pegawai/hapus/{id}', 'PegawaiController@hapus');
+
+Route::get('pegawai/formulir', 'PegawaiController@formulir');
+Route::post('pegawai/proses', 'PegawaiController@proses');
 
 Route::get('blog', 'BlogController@index');
 Route::get('blog/tentang', 'BlogController@tentang');
