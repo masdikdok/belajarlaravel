@@ -1,39 +1,55 @@
-<!-- Menghubungkan dengan view template master -->
-@extends('master')
-
-<!-- isi bagian judul halaman -->
-<!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Tambah Pegawai')
-
+<!-- Menghubungkan dengan view template layouts/app -->
+@extends('layouts.app')
 
 <!-- isi bagian konten -->
 <!-- cara penulisan isi section yang panjang -->
-@section('konten')
+@section('content')
 
-	<a href="/pegawai">Kembali</a>
-    <br>
-    <br>
-    <form action="/pegawai/tambah" method="post">
-        {{ csrf_field() }}
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-header">{{ __('Tambah Pegawai') }}</div>
 
-        <div>
-            <label for="">Nama</label>
-            <input type="text" name="nama" placeholder="Nama">
-        </div>
-        <div>
-            <label for="">Jabatan</label>
-            <input type="text" name="jabatan" placeholder="Jabatan">
-        </div>
-        <div>
-            <label for="">Umur</label>
-            <input type="number" name="umur" placeholder="Umur">
-        </div>
-        <div>
-            <label for="">Alamat</label>
-            <textarea name="alamat" rows="2" cols="20"></textarea>
-        </div>
-        <input type="submit" name="submit" value="Simpan Data">
+				<div class="card-body">
+					<form action="/pegawai/tambah" method="post">
+						@csrf
 
-    </form>
+						@if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $key => $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+						<div class="form-group">
+							<label for="">Nama</label>
+							<input type="text" name="nama" placeholder="Nama" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Jabatan</label>
+							<input type="text" name="jabatan" placeholder="Jabatan" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Umur</label>
+							<input type="number" name="umur" placeholder="Umur" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="">Alamat</label>
+							<textarea name="alamat" rows="2" cols="20" class="form-control"></textarea>
+						</div>
+						<a href="/pegawai" class="btn btn-info">Kembali</a>
+						<button type="submit" class="btn btn-success" name="submit">Simpan Data</button>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 @endsection

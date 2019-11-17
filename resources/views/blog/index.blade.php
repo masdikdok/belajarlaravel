@@ -1,16 +1,22 @@
-<!-- Menghubungkan dengan view template master -->
-@extends('master')
-
-<!-- isi bagian judul halaman -->
-<!-- cara penulisan isi section yang pendek -->
-@section('judul_halaman', 'Halaman Home')
-
+<!-- Menghubungkan dengan view template layouts/app -->
+@extends('layouts.app')
 
 <!-- isi bagian konten -->
 <!-- cara penulisan isi section yang panjang -->
-@section('konten')
+@section('content')
 
-	<p>Ini Adalah Halaman Home</p>
-	<p>Selamat datang !</p>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header">Blog</div>
+					<div class="card-body">
+						<p>Ini Adalah Halaman Home</p>
+						<p>Selamat datang !</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 @endsection

@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request){
         if($request->has(['cari'])){
             $pegawai = DB::table('pegawai')->where('nama', 'like', '%'.$request->cari.'%')->paginate(10);
@@ -22,6 +27,13 @@ class PegawaiController extends Controller
 
     public function tambah(Request $request){
         if($request->isMethod('post')){
+            $this->validate($request, [
+                'nama' => 'required|min:5|max:30',
+                'jabatan' => 'required',
+                'umur' => 'required',
+                'alamat' => 'required'
+            ]);
+
             $tambah = DB::table('pegawai')->insert([
                 'nama' => $request->nama,
                 'jabatan' => $request->jabatan,
