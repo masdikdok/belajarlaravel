@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Route;
 
 class ArticleController extends Controller
 {
@@ -11,5 +12,10 @@ class ArticleController extends Controller
         $articles = Article::paginate(10);
 
         return view('article/index', ['articles' => $articles]);
+    }
+
+    public function checkAction(){
+
+        return Route::currentRouteAction();
     }
 }

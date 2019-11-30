@@ -41,3 +41,23 @@ Route::get('/barang/restore/{id}', 'BarangController@restore');
 Route::post('/barang/forcedelete', 'BarangController@forcedelete');
 
 Route::get('/article', 'ArticleController@index');
+
+Route::get('/checkaction', 'ArticleController@checkAction');
+
+Route::get('/listaction', function(){
+    $controllers = [];
+
+    foreach (Route::getRoutes()->getRoutes() as $route)
+    {
+        $action = $route->getAction();
+
+        if (array_key_exists('controller', $action))
+        {
+            // You can also use explode('@', $action['controller']); here
+            // to separate the class name from the method
+            $controllers[] = $action['controller'];
+        }
+    }
+
+    return "<pre>". print_r($controllers, true) ."</pre>";
+});
