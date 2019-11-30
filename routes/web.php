@@ -11,12 +11,18 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/kirimemail', 'HomeController@kirimemail')->name('kirimemail');
+
+Route::get('/contohemail', function () {
+    return new App\Mail\belajarlaravelEmail();
+});
 
 Route::get('/dosen', 'DosenController@index');
 
