@@ -9,7 +9,7 @@ use Route;
 class ArticleController extends Controller
 {
     public function index(){
-        $articles = Article::paginate(10);
+        $articles = Article::with('tags')->paginate(10);
 
         return view('article/index', ['articles' => $articles]);
     }
